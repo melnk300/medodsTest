@@ -1,7 +1,22 @@
 package main
 
-import "fmt"
+import (
+	"github.com/joho/godotenv"
+	"github.com/melnk300/medodsTest/internal/app"
+	"log"
+	"net/http"
+)
+
+func init() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatalf("Error loading .env file: %v", err)
+	}
+}
 
 func main() {
-	fmt.Println("Server here")
+	err := http.ListenAndServe(":3000", app.Server())
+	if err != nil {
+		panic("Server incorrect")
+	}
 }
