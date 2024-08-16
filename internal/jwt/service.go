@@ -3,7 +3,6 @@ package jwt
 import (
 	"github.com/melnk300/medodsTest/pkg/database"
 	"github.com/melnk300/medodsTest/pkg/tokens"
-	"golang.org/x/crypto/bcrypt"
 	"log"
 )
 
@@ -18,9 +17,7 @@ func CreateTokens(ip string, guid string) (tokens.Token, tokens.Token) {
 
 	access, refresh, jti := tokens.GenerateTokens(ip, guid)
 
-	hashedJti, _ := bcrypt.GenerateFromPassword([]byte(jti), bcrypt.DefaultCost)
-
-	_, err = db.Exec("INSERT INTO tokens VALUES ($1, $2)", string(hashedJti), guid)
+	_, err = db.Exec("INSERT INTO tokens VALUES ($1, $2)", jti, guid)
 	if err != nil {
 		log.Fatalf("Error inserting token: %v", err)
 	}
