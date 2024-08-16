@@ -13,6 +13,18 @@ services:
     networks:
       - medods
 
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: medods_app
+    depends_on:
+      - database
+    ports:
+      - "3000:3000"
+    networks:
+      - medods
+
 volumes:
   postgres_data:
     driver: local

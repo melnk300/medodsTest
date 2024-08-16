@@ -15,6 +15,7 @@ func init() {
 }
 
 func main() {
+	log.Println("Server started on port 3000")
 	err := http.ListenAndServe(":3000", app.Server())
 	if err != nil {
 		panic("Server incorrect")
