@@ -9,6 +9,7 @@ func Server() chi.Router {
 	r := chi.NewRouter()
 
 	r.Get("/{guid}", jwt.HandleCreateTokens)
+	r.Get("/refresh", jwt.HandleRefreshToken)
 
 	return r
 }
