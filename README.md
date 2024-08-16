@@ -1,4 +1,4 @@
-# GWT auth server
+# JWT auth server
 ## Тестовое задание от [Мельник Руслана Сергеевича](https://surgut.hh.ru/resume/f983c45cff0bee08e50039ed1f723673737344) 
 
 При работе необходимы данные конфигурации `.env`. Его труктура описана в файле [.env.example](./.env.example).
